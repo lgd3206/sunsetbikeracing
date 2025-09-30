@@ -33,39 +33,69 @@ if (isMobile() || isTouch()) {
 if (gameFrame && gameLoader) {
     let loadTimeout;
     let hasLoaded = false;
+    let checkInterval;
 
-    // Hide loader when iframe loads
+    // 方法1: 监听iframe load事件
     gameFrame.addEventListener('load', () => {
+        console.log('Game iframe loaded');
         hasLoaded = true;
         clearTimeout(loadTimeout);
+        clearInterval(checkInterval);
+        hideLoader();
+    });
 
-        // 延迟隐藏加载器，给游戏更多时间初始化
-        setTimeout(() => {
+    // 方法2: 定期检查iframe内容（备用方案）
+    checkInterval = setInterval(() => {
+        try {
+            // 检查iframe是否已经有内容
+            if (gameFrame.contentWindow && gameFrame.contentWindow.document.body) {
+                console.log('Game iframe content detected');
+                hasLoaded = true;
+                clearTimeout(loadTimeout);
+                clearInterval(checkInterval);
+                hideLoader();
+            }
+        } catch (e) {
+            // 跨域问题，使用时间作为备用
+            console.log('Cross-origin, using time-based fallback');
+        }
+    }, 500); // 每500ms检查一次
+
+    // 方法3: 固定时间后自动隐藏（保底方案）
+    setTimeout(() => {
+        if (gameLoader && gameLoader.style.display !== 'none') {
+            console.log('Force hiding loader after 8 seconds');
+            hideLoader();
+        }
+        clearInterval(checkInterval);
+    }, 8000); // 8秒后强制隐藏
+
+    // 隐藏加载器的函数
+    function hideLoader() {
+        if (gameLoader) {
             gameLoader.style.opacity = '0';
+            gameLoader.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
                 gameLoader.style.display = 'none';
             }, 500);
-        }, 2000); // 2秒后才隐藏，确保游戏已完全加载
-    });
+        }
+    }
 
-    // Fallback: Hide loader after timeout
+    // 超时提示（15秒后）
     loadTimeout = setTimeout(() => {
-        if (!hasLoaded) {
+        if (!hasLoaded && gameLoader && gameLoader.style.display !== 'none') {
             gameLoader.innerHTML = `
                 <div class="spinner"></div>
                 <p style="color: #ff6b35; font-size: 1.2rem; font-weight: 600;">⚠️ 游戏加载时间较长</p>
                 <p style="color: #a0a0a0; font-size: 1rem; margin-top: 10px;">请稍候或点击上方"在新窗口打开游戏"</p>
             `;
 
-            // Still hide after showing message
+            // 再等5秒后隐藏
             setTimeout(() => {
-                gameLoader.style.opacity = '0';
-                setTimeout(() => {
-                    gameLoader.style.display = 'none';
-                }, 500);
-            }, 5000); // 再等5秒
+                hideLoader();
+            }, 5000);
         }
-    }, 15000); // 15秒超时（增加时间）
+    }, 15000);
 
     // Error handling
     gameFrame.addEventListener('error', () => {
@@ -175,34 +205,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ==========================================
-// GAME LOADER
-// ==========================================
-
-const gameFrame = document.getElementById('game-frame');
-const gameLoader = document.querySelector('.game-loader');
-
-if (gameFrame && gameLoader) {
-    gameFrame.addEventListener('load', () => {
-        // Hide loader after game iframe loads
-        setTimeout(() => {
-            gameLoader.style.opacity = '0';
-            setTimeout(() => {
-                gameLoader.style.display = 'none';
-            }, 300);
-        }, 1000);
-    });
-
-    // Fallback: Hide loader after 5 seconds regardless
-    setTimeout(() => {
-        if (gameLoader.style.display !== 'none') {
-            gameLoader.style.opacity = '0';
-            setTimeout(() => {
-                gameLoader.style.display = 'none';
-            }, 300);
-        }
-    }, 5000);
-}
 
 // ==========================================
 // LAZY LOADING FOR GAME IFRAME
