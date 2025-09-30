@@ -373,34 +373,29 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 75%; /* 4:3 Aspect Ratio - taller for full game view */
+    height: 800px; /* Larger fixed height for complete game display */
     background: #000;
     border-radius: 15px;
-    overflow: visible;
+    overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
-    min-height: 600px;
 }
 
 @media (max-width: 968px) {
     .game-wrapper {
-        min-height: 500px;
-        padding-bottom: 80%;
+        height: 700px;
     }
 }
 
 @media (max-width: 768px) {
     .game-wrapper {
-        min-height: 450px;
-        padding-bottom: 100%;
+        height: 600px;
     }
 }
 
 @media (max-width: 480px) {
     .game-wrapper {
-        min-height: 400px;
-        padding-bottom: 120%;
+        height: 500px;
     }
 }
 
