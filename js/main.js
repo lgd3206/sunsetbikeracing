@@ -16,7 +16,6 @@ const isTouch = () => {
 // ==========================================
 
 const gameFrame = document.getElementById('game-frame');
-const gameLoader = document.querySelector('.game-loader');
 const mobileWarning = document.getElementById('mobile-warning');
 
 // Show mobile warning on mobile devices
@@ -29,28 +28,10 @@ if (isMobile() || isTouch()) {
     console.log('Mobile device detected');
 }
 
-// Simple game loading - just hide loader after delay
-if (gameFrame && gameLoader) {
-    // 简单方案：固定时间后隐藏加载器
-    setTimeout(() => {
-        if (gameLoader) {
-            gameLoader.style.opacity = '0';
-            gameLoader.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                gameLoader.style.display = 'none';
-            }, 500);
-        }
-    }, 3000); // 3秒后自动隐藏
-
-    // Error handling
+// Error handling for game iframe
+if (gameFrame) {
     gameFrame.addEventListener('error', () => {
         console.error('Failed to load game iframe');
-        if (gameLoader) {
-            gameLoader.innerHTML = `
-                <p style="color: #ff6b35;">⚠️ 游戏加载失败</p>
-                <p style="color: #a0a0a0; font-size: 0.9rem;">请使用下方备用链接</p>
-            `;
-        }
 
         // Show mobile warning if not already visible
         if (mobileWarning) {
@@ -328,19 +309,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat').forEach(stat => {
     statsObserver.observe(stat);
 });
-
-// ==========================================
-// ERROR HANDLING FOR GAME IFRAME
-// ==========================================
-
-if (gameFrame) {
-    gameFrame.addEventListener('error', () => {
-        console.error('Failed to load game iframe');
-        if (gameLoader) {
-            gameLoader.innerHTML = '<p style="color: #ff6b35;">⚠️ Failed to load game. Please refresh the page.</p>';
-        }
-    });
-}
 
 // ==========================================
 // COPY TO CLIPBOARD (for sharing)
