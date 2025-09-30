@@ -373,13 +373,30 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 700px; /* Fixed height for better game display */
     background: #000;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
-    min-height: 500px;
+}
+
+@media (max-width: 968px) {
+    .game-wrapper {
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-wrapper {
+        height: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-wrapper {
+        height: 400px;
+    }
 }
 
 .game-container-inner {
