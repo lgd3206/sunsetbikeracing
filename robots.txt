@@ -1,0 +1,43 @@
+# Robots.txt for Sunset Bike Racing
+# This file tells search engines which pages they can and cannot crawl
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin or private directories (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow crawling of CSS and JavaScript files (important for SEO)
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://www.sunsetbikeracing.click/sitemap.xml
+
+# Crawl-delay (optional - use only if needed to prevent server overload)
+# Crawl-delay: 1
+
+# Specific rules for different search engines (if needed)
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Disallow bad bots (optional)
+# User-agent: BadBot
+# Disallow: /
