@@ -39,20 +39,22 @@ if (gameFrame && gameLoader) {
         hasLoaded = true;
         clearTimeout(loadTimeout);
 
+        // 延迟隐藏加载器，给游戏更多时间初始化
         setTimeout(() => {
             gameLoader.style.opacity = '0';
             setTimeout(() => {
                 gameLoader.style.display = 'none';
-            }, 300);
-        }, 1000);
+            }, 500);
+        }, 2000); // 2秒后才隐藏，确保游戏已完全加载
     });
 
     // Fallback: Hide loader after timeout
     loadTimeout = setTimeout(() => {
         if (!hasLoaded) {
             gameLoader.innerHTML = `
-                <p style="color: #ff6b35;">⚠️ 游戏加载时间较长</p>
-                <p style="color: #a0a0a0; font-size: 0.9rem;">请稍候或点击上方备用链接</p>
+                <div class="spinner"></div>
+                <p style="color: #ff6b35; font-size: 1.2rem; font-weight: 600;">⚠️ 游戏加载时间较长</p>
+                <p style="color: #a0a0a0; font-size: 1rem; margin-top: 10px;">请稍候或点击上方"在新窗口打开游戏"</p>
             `;
 
             // Still hide after showing message
@@ -60,10 +62,10 @@ if (gameFrame && gameLoader) {
                 gameLoader.style.opacity = '0';
                 setTimeout(() => {
                     gameLoader.style.display = 'none';
-                }, 300);
-            }, 3000);
+                }, 500);
+            }, 5000); // 再等5秒
         }
-    }, 10000); // 10 seconds timeout
+    }, 15000); // 15秒超时（增加时间）
 
     // Error handling
     gameFrame.addEventListener('error', () => {

@@ -11,7 +11,10 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "Bash(git reset:*)",
-      "WebFetch(domain:sunsetbikeracing.bike)"
+      "WebFetch(domain:sunsetbikeracing.bike)",
+      "Bash(npm:*)",
+      "Bash(set VERCEL_USER_AGENT=vercel-cli)",
+      "Bash(vercel:*)"
     ],
     "deny": [],
     "ask": []
