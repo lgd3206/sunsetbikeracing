@@ -267,6 +267,17 @@
                 <p class="section-subtitle">No download required - Start playing instantly in your browser!</p>
             </div>
             <div class="game-container">
+                <!-- Mobile Warning Banner -->
+                <div id="mobile-warning" class="mobile-warning" style="display: none;">
+                    <div class="warning-content">
+                        <span class="warning-icon">📱</span>
+                        <p><strong>提示：</strong>如果游戏无法加载，请点击下方按钮在新窗口中打开游戏。</p>
+                        <a href="https://www.crazygames.com/game/sunset-bike-racing" target="_blank" rel="noopener" class="btn btn-primary">
+                            🎮 在新窗口打开游戏
+                        </a>
+                    </div>
+                </div>
+
                 <div class="game-wrapper">
                     <div id="game-iframe-container">
                         <iframe
@@ -274,14 +285,34 @@
                             src="https://www.crazygames.com/embed/sunset-bike-racing"
                             frameborder="0"
                             allowfullscreen
-                            allow="gamepad *;"
-                            title="Sunset Bike Racing Game"
-                            loading="lazy">
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; fullscreen; gamepad; microphone; camera; focus-without-user-activation"
+                            allowtransparency="true"
+                            scrolling="no"
+                            title="Play Sunset Bike Racing Game - Free Online Motocross Racing"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock"
+                            importance="high">
                         </iframe>
                     </div>
-                    <div class="game-loader">
+                    <div class="game-loader" id="game-loader">
                         <div class="spinner"></div>
                         <p>Loading Game...</p>
+                        <p class="loader-tip">If the game doesn't load, try the button above</p>
+                    </div>
+                </div>
+
+                <!-- Alternative Game Links -->
+                <div class="alternative-links">
+                    <p class="alt-text">游戏无法加载？尝试以下备用链接：</p>
+                    <div class="alt-buttons">
+                        <a href="https://www.crazygames.com/game/sunset-bike-racing" target="_blank" rel="noopener" class="btn btn-secondary btn-small">
+                            CrazyGames
+                        </a>
+                        <a href="https://www.kizgame.com/en/game/sunset-bike-racing/" target="_blank" rel="noopener" class="btn btn-secondary btn-small">
+                            KizGame
+                        </a>
+                        <a href="https://poki.com/en/g/sunset-bike-racer" target="_blank" rel="noopener" class="btn btn-secondary btn-small">
+                            Poki
+                        </a>
                     </div>
                 </div>
                 <div class="game-controls-info">

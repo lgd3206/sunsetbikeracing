@@ -312,6 +312,64 @@ section {
     margin: 0 auto;
 }
 
+/* Mobile Warning Banner */
+.mobile-warning {
+    background: rgba(255, 152, 0, 0.1);
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.warning-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.warning-icon {
+    font-size: 2.5rem;
+}
+
+.warning-content p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.warning-content .btn {
+    margin-top: 10px;
+}
+
+/* Alternative Links */
+.alternative-links {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.alt-text {
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.alt-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
 .game-wrapper {
     position: relative;
     width: 100%;
@@ -344,6 +402,13 @@ section {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
+}
+
+.loader-tip {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    opacity: 0.8;
 }
 
 .spinner {

@@ -1,4 +1,88 @@
 // ==========================================
+// MOBILE DEVICE DETECTION
+// ==========================================
+
+const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        || (window.innerWidth <= 768);
+};
+
+const isTouch = () => {
+    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+};
+
+// ==========================================
+// GAME LOADER
+// ==========================================
+
+const gameFrame = document.getElementById('game-frame');
+const gameLoader = document.querySelector('.game-loader');
+const mobileWarning = document.getElementById('mobile-warning');
+
+// Show mobile warning on mobile devices
+if (isMobile() || isTouch()) {
+    if (mobileWarning) {
+        mobileWarning.style.display = 'block';
+    }
+
+    // Log for debugging
+    console.log('Mobile device detected');
+}
+
+// Enhanced game loading
+if (gameFrame && gameLoader) {
+    let loadTimeout;
+    let hasLoaded = false;
+
+    // Hide loader when iframe loads
+    gameFrame.addEventListener('load', () => {
+        hasLoaded = true;
+        clearTimeout(loadTimeout);
+
+        setTimeout(() => {
+            gameLoader.style.opacity = '0';
+            setTimeout(() => {
+                gameLoader.style.display = 'none';
+            }, 300);
+        }, 1000);
+    });
+
+    // Fallback: Hide loader after timeout
+    loadTimeout = setTimeout(() => {
+        if (!hasLoaded) {
+            gameLoader.innerHTML = `
+                <p style="color: #ff6b35;">⚠️ 游戏加载时间较长</p>
+                <p style="color: #a0a0a0; font-size: 0.9rem;">请稍候或点击上方备用链接</p>
+            `;
+
+            // Still hide after showing message
+            setTimeout(() => {
+                gameLoader.style.opacity = '0';
+                setTimeout(() => {
+                    gameLoader.style.display = 'none';
+                }, 300);
+            }, 3000);
+        }
+    }, 10000); // 10 seconds timeout
+
+    // Error handling
+    gameFrame.addEventListener('error', () => {
+        console.error('Failed to load game iframe');
+        if (gameLoader) {
+            gameLoader.innerHTML = `
+                <p style="color: #ff6b35;">⚠️ 游戏加载失败</p>
+                <p style="color: #a0a0a0; font-size: 0.9rem;">请使用下方备用链接</p>
+            `;
+        }
+
+        // Show mobile warning if not already visible
+        if (mobileWarning) {
+            mobileWarning.style.display = 'block';
+        }
+    });
+}
+
+// ==========================================
 // MOBILE MENU TOGGLE
 // ==========================================
 
@@ -132,18 +216,17 @@ const gameObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const iframe = entry.target;
-            if (iframe.dataset.src) {
-                iframe.src = iframe.dataset.src;
-                iframe.removeAttribute('data-src');
-            }
+            // Ensure iframe loads when visible (already has src, just observe)
+            console.log('Game section is now visible');
             gameObserver.unobserve(iframe);
         }
     });
 }, observerOptions);
 
-// Observe game iframe if it exists
-if (gameFrame) {
-    gameObserver.observe(gameFrame);
+// Observe game iframe container instead of iframe itself
+const gameContainer = document.querySelector('.game-wrapper');
+if (gameContainer) {
+    gameObserver.observe(gameContainer);
 }
 
 // ==========================================
