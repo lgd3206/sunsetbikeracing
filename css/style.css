@@ -373,30 +373,44 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    height: 630px; /* Balanced: complete game display without excessive overflow */
+    height: 800px; /* Larger fixed height for complete game display */
     background: #000;
     border-radius: 15px;
-    overflow: auto; /* Allow scrolling if needed */
+    overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
 }
 
 @media (max-width: 968px) {
     .game-wrapper {
-        height: 570px;
+        height: 700px;
     }
 }
 
 @media (max-width: 768px) {
     .game-wrapper {
-        height: 500px;
+        height: 600px;
     }
 }
 
 @media (max-width: 480px) {
     .game-wrapper {
-        height: 410px;
+        height: 500px;
     }
+}
+
+.game-container-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.game-container-inner iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .game-fallback {
