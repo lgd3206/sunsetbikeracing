@@ -29,49 +29,10 @@ if (isMobile() || isTouch()) {
     console.log('Mobile device detected');
 }
 
-// Enhanced game loading
+// Simple game loading - just hide loader after delay
 if (gameFrame && gameLoader) {
-    let loadTimeout;
-    let hasLoaded = false;
-    let checkInterval;
-
-    // 方法1: 监听iframe load事件
-    gameFrame.addEventListener('load', () => {
-        console.log('Game iframe loaded');
-        hasLoaded = true;
-        clearTimeout(loadTimeout);
-        clearInterval(checkInterval);
-        hideLoader();
-    });
-
-    // 方法2: 定期检查iframe内容（备用方案）
-    checkInterval = setInterval(() => {
-        try {
-            // 检查iframe是否已经有内容
-            if (gameFrame.contentWindow && gameFrame.contentWindow.document.body) {
-                console.log('Game iframe content detected');
-                hasLoaded = true;
-                clearTimeout(loadTimeout);
-                clearInterval(checkInterval);
-                hideLoader();
-            }
-        } catch (e) {
-            // 跨域问题，使用时间作为备用
-            console.log('Cross-origin, using time-based fallback');
-        }
-    }, 500); // 每500ms检查一次
-
-    // 方法3: 固定时间后自动隐藏（保底方案）
+    // 简单方案：固定时间后隐藏加载器
     setTimeout(() => {
-        if (gameLoader && gameLoader.style.display !== 'none') {
-            console.log('Force hiding loader after 8 seconds');
-            hideLoader();
-        }
-        clearInterval(checkInterval);
-    }, 8000); // 8秒后强制隐藏
-
-    // 隐藏加载器的函数
-    function hideLoader() {
         if (gameLoader) {
             gameLoader.style.opacity = '0';
             gameLoader.style.transition = 'opacity 0.5s ease';
@@ -79,23 +40,7 @@ if (gameFrame && gameLoader) {
                 gameLoader.style.display = 'none';
             }, 500);
         }
-    }
-
-    // 超时提示（15秒后）
-    loadTimeout = setTimeout(() => {
-        if (!hasLoaded && gameLoader && gameLoader.style.display !== 'none') {
-            gameLoader.innerHTML = `
-                <div class="spinner"></div>
-                <p style="color: #ff6b35; font-size: 1.2rem; font-weight: 600;">⚠️ 游戏加载时间较长</p>
-                <p style="color: #a0a0a0; font-size: 1rem; margin-top: 10px;">请稍候或点击上方"在新窗口打开游戏"</p>
-            `;
-
-            // 再等5秒后隐藏
-            setTimeout(() => {
-                hideLoader();
-            }, 5000);
-        }
-    }, 15000);
+    }, 3000); // 3秒后自动隐藏
 
     // Error handling
     gameFrame.addEventListener('error', () => {
