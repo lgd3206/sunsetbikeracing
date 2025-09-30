@@ -15,7 +15,7 @@ Allow: /js/
 Allow: /images/
 
 # Sitemap location
-Sitemap: https://www.sunsetbikeracing.click/sitemap.xml
+Sitemap: https://www.sunsetbikeracing.bike/sitemap.xml
 
 # Crawl-delay (optional - use only if needed to prevent server overload)
 # Crawl-delay: 1
