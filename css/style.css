@@ -398,25 +398,32 @@ section {
 
 .game-fallback {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(26, 26, 46, 0.9);
-    padding: 15px 30px;
-    border-radius: 10px;
+    background: rgba(26, 26, 46, 0.85);
+    padding: 10px 20px;
+    border-radius: 8px;
     text-align: center;
     z-index: 1;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.game-fallback:hover {
+    opacity: 1;
 }
 
 .game-fallback p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-gray);
 }
 
 .game-fallback a {
     color: var(--primary-color);
     text-decoration: underline;
+    font-weight: 600;
 }
 
 .game-controls-info {
