@@ -266,6 +266,7 @@
                 <h2 class="section-title">🎮 Play Sunset Bike Racing Online</h2>
                 <p class="section-subtitle">No download required - Start playing instantly in your browser!</p>
             </div>
+
             <div class="game-container">
                 <!-- Mobile Warning Banner -->
                 <div id="mobile-warning" class="mobile-warning" style="display: none;">
@@ -279,16 +280,20 @@
                 </div>
 
                 <div class="game-wrapper">
-                    <div class="game-placeholder">
-                        <div class="game-placeholder-content">
-                            <span class="game-icon">🏍️</span>
-                            <h3>Ready to Race?</h3>
-                            <p>Click the button below to start playing Sunset Bike Racing!</p>
-                            <a href="https://www.crazygames.com/game/sunset-bike-racing" target="_blank" rel="noopener" class="btn btn-primary btn-large">
-                                🎮 Play Now
-                            </a>
-                            <p class="game-note">Opens in a new window - No downloads required!</p>
-                        </div>
+                    <div class="game-container-inner">
+                        <iframe
+                            id="game-frame"
+                            src="https://html5.gamedistribution.com/rvvASMiM/6cad1bfddb514d5cb99809c0b2f79e51/index.html?gd_sdk_referrer_url=https://sunsetbikeracing.bike"
+                            frameborder="0"
+                            allowfullscreen
+                            allow="autoplay; fullscreen; gamepad"
+                            scrolling="no"
+                            title="Play Sunset Bike Racing - Free Online Motocross Game"
+                            loading="eager">
+                        </iframe>
+                    </div>
+                    <div class="game-fallback">
+                        <p>游戏加载中... 如果长时间未加载，请<a href="https://www.crazygames.com/game/sunset-bike-racing" target="_blank" rel="noopener">点击这里</a>在新窗口打开</p>
                     </div>
                 </div>
 
