@@ -374,77 +374,61 @@ section {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    background: #000;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
-    min-height: 500px; /* 确保有最小高度 */
+    min-height: 500px;
 }
 
-#game-iframe-container {
+.game-placeholder {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000; /* 黑色背景遮盖加载界面 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#game-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #000;
-}
-
-.game-loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.game-placeholder-content {
     text-align: center;
-    z-index: 10; /* 提高层级，覆盖iframe内容 */
-    background: rgba(26, 26, 46, 0.95);
-    padding: 40px 60px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    max-width: 600px;
 }
 
-.loader-tip {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    opacity: 0.8;
+.game-icon {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
 }
 
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid rgba(255, 107, 53, 0.3);
-    border-top-color: var(--primary-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 25px;
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
-.game-loader p {
-    font-size: 1.2rem;
-    font-weight: 600;
+.game-placeholder-content h3 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     color: var(--text-light);
-    margin: 10px 0;
 }
 
-.loader-tip {
-    margin-top: 15px;
-    font-size: 1rem;
+.game-placeholder-content p {
+    font-size: 1.2rem;
     color: var(--text-gray);
-    opacity: 0.9;
+    margin-bottom: 30px;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.game-note {
+    margin-top: 20px !important;
+    font-size: 0.9rem !important;
+    color: var(--secondary-color) !important;
+    opacity: 0.8;
 }
 
 .game-controls-info {
