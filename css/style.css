@@ -373,7 +373,7 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    height: 800px; /* Larger fixed height for complete game display */
+    height: 680px; /* Reduced from 800px for tighter display */
     background: #000;
     border-radius: 15px;
     overflow: hidden;
@@ -383,19 +383,19 @@ section {
 
 @media (max-width: 968px) {
     .game-wrapper {
-        height: 700px;
+        height: 600px;
     }
 }
 
 @media (max-width: 768px) {
     .game-wrapper {
-        height: 600px;
+        height: 550px;
     }
 }
 
 @media (max-width: 480px) {
     .game-wrapper {
-        height: 500px;
+        height: 450px;
     }
 }
 
