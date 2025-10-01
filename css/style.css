@@ -373,8 +373,7 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 600px;
     background: #000;
     border-radius: 15px;
     overflow: hidden;
@@ -804,6 +803,10 @@ section {
     .image-placeholder {
         order: -1;
     }
+
+    .game-wrapper {
+        height: 500px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -852,6 +855,10 @@ section {
     .steps-container {
         grid-template-columns: 1fr;
     }
+
+    .game-wrapper {
+        height: 400px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -884,6 +891,10 @@ section {
         min-width: auto;
         display: block;
         margin-bottom: 5px;
+    }
+
+    .game-wrapper {
+        height: 300px;
     }
 }
 
