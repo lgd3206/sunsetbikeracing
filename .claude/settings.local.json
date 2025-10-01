@@ -1,23 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:sunsetbikeracing.online)",
-      "WebFetch(domain:sunsetbikeracing.cc)",
-      "WebSearch",
-      "Bash(git init:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git remote add:*)",
-      "Bash(git branch:*)",
-      "Bash(git push:*)",
-      "Bash(git reset:*)",
-      "WebFetch(domain:sunsetbikeracing.bike)",
-      "Bash(npm:*)",
-      "Bash(set VERCEL_USER_AGENT=vercel-cli)",
-      "Bash(vercel:*)",
-      "Bash(git pull:*)",
-      "Bash(git stash:*)",
-      "Bash(height: 100%\"\n- Increased .game-wrapper height from 600px to 700px for fuller display\n- Adjusted responsive heights: 550px (@968px), 450px (@768px), 350px (@480px)\n- This should show the complete game while maintaining proper proportions\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "WebFetch(domain:www.sunsetbikeracing.bike)"
     ],
     "deny": [],
     "ask": []
