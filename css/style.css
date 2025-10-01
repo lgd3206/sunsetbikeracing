@@ -373,7 +373,7 @@ section {
 .game-wrapper {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 900px;
     background: #000;
     border-radius: 15px;
     overflow: hidden;
@@ -805,7 +805,7 @@ section {
     }
 
     .game-wrapper {
-        height: 550px;
+        height: 700px;
     }
 }
 
@@ -857,7 +857,7 @@ section {
     }
 
     .game-wrapper {
-        height: 450px;
+        height: 600px;
     }
 }
 
@@ -894,7 +894,7 @@ section {
     }
 
     .game-wrapper {
-        height: 350px;
+        height: 500px;
     }
 }
 
